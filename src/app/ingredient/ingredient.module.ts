@@ -16,6 +16,7 @@ import { IngredientListComponent } from './ingredient-list/ingredient-list.compo
 import { IngredientDetailComponent } from './ingredient-detail/ingredient-detail.component';
 import { IngredientDeleteComponent } from './ingredient-delete/ingredient-delete.component';
 import { IngredientCreateComponent } from './ingredient-create/ingredient-create.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { IngredientCreateComponent } from './ingredient-create/ingredient-create
     FormsModule,
     MatDividerModule,MatIconModule,MatMenuModule,MatTableModule, // ingredientListComponent  
     MatCardModule,
-    IngredientRoutingModule
+    IngredientRoutingModule,MatButtonModule
   ], 
   providers: [
     IngredientService
