@@ -11,7 +11,7 @@ describe('recipeService', () => {
   //let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let service: RecipeService;
-  const url = 'http://localhost:8080/api/recipe';
+  const url = 'http://localhost:8080/api/v1/recipe';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -137,9 +137,9 @@ describe('recipeService', () => {
     httpTestingController.verify();
   });
     
-  it('recipe service should ADD a specific data to the a specific ID Recipe', () => {
+  it('recipe service should ADD a specific ingredient to the a specific ID Recipe', () => {
     const id : number = 1;
-    const apiSuffix : string = "add-recipe";
+    const apiSuffix : string = "add-ingredient"; 
     const data : Data = {id:1, name: 'Testing Data 1'}
 
     service.addIngredientToRecipe(id, data)
@@ -160,7 +160,7 @@ describe('recipeService', () => {
        
   it('recipe service should REMOVE a specific data to the a specific ID Recipe', () => {
     const id : number = 1;
-    const apiSuffix : string = "remove-recipe";
+    const apiSuffix : string = "remove-ingredient";
     const data : Data = {id:1, name: 'Testing Data 1'}
 
     service.removeIngredientFromRecipe(id, data)

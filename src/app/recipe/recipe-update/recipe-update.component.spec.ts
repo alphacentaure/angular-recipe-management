@@ -57,8 +57,8 @@ describe('RecipeUpdateComponent', () => {
   });
   
   it('activated route should show the ID of the Recipe', () => {
-    let testEl = fixture.debugElement.query(By.css('div'));
-    expect(testEl.nativeElement.textContent).toEqual(' Form for updating the recipe with the ID :  1 NameUpdate');
+    let testEl = fixture.debugElement.query(By.css('h1')); 
+    expect(testEl.nativeElement.textContent).toEqual('Update a recipe 1');
   });
 
   it('getRecipes() by id should return one recipe', () => {

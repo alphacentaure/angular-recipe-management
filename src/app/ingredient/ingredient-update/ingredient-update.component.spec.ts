@@ -58,8 +58,8 @@ describe('IngredientUpdateComponent', () => {
   });
 
   it('activated route should show the ID of the ingredient', () => {
-    let testEl = fixture.debugElement.query(By.css('div'));
-    expect(testEl.nativeElement.textContent).toEqual(' Form for updating the ingredient with the ID : 1NameQuantityUpdate');
+    let testEl = fixture.debugElement.query(By.css('h1'));
+    expect(testEl.nativeElement.textContent).toEqual('Update a ingredient 1');
   });
 
   it('getIngredient() by id should return a specific ingredient', () => {
@@ -69,7 +69,7 @@ describe('IngredientUpdateComponent', () => {
 
   it('should update a ingredient', () => {      
     const expectedData: Data = {id: 1, name: 'Name ingredient 1', quantity: '1 quantity'};
-    component.onUpdateIngredient();
+    component.updateIngredient();
     expect(component.ingredient).toEqual(expectedData);
   });
 

@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { By } from '@angular/platform-browser';
-import { RecipeService } from '../../service/recipe.service';
+import { RecipeService } from '../service/recipe.service';
 import { RecipeDetailComponent } from './recipe-detail.component';
 
 describe('RecipeDetailComponent', () => {
