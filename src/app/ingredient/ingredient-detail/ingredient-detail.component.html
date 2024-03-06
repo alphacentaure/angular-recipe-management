@@ -1,0 +1,41 @@
+<nav aria-label="breadcrumb" class="sticky-top">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">
+      <a routerLink="/ingredients">Ingredients</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Details</li>
+  </ol>
+</nav>
+
+<nav class="navbar navbar-light bg-light">
+  <h1>Shows ingredient details</h1>
+</nav>
+ 
+<mat-card *ngIf="ingredient">
+  <mat-card-header>
+    <mat-card-subtitle>
+      <mat-icon>assignment</mat-icon>
+      Ingredient ID :
+      <span class="badge badge-secondary rounded-pill">{{ ingredient.id }}</span>
+    </mat-card-subtitle>
+    <mat-card-title>
+      <mat-icon>subtitles</mat-icon>
+      Name : {{ ingredient.name }}
+    </mat-card-title>
+    <mat-card-title>
+      <mat-icon>subtitles</mat-icon>
+      Quantity : {{ ingredient.quantity }}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <p>
+      <mat-icon>access_time</mat-icon>
+      Created On : {{ ingredient.createdOn | date : "short" }}
+    </p>
+    <p *ngIf="ingredient.updatedOn">
+      <mat-icon>access_time</mat-icon>
+      Update On : {{ ingredient.updatedOn | date : "short" }}
+    </p>
+  </mat-card-content>
+</mat-card>

@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rmav2';
+
+  events: string[] = [];
+  opened: boolean = true;
 }
