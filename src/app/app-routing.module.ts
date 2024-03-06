@@ -3,12 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  /*{
+  {
     path: 'recipes',
     loadChildren: () =>
-      import('./recipe/recipe.module').then((m) => m.CollectionModule),
-  },*/
-   
+      import('./recipe/recipe.module').then((m) => m.RecipeModule),
+  },   
   {
     path: 'ingredients',
     loadChildren: () =>

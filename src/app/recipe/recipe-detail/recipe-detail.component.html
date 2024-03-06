@@ -1,0 +1,107 @@
+<nav aria-label="breadcrumb" class="sticky-top">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item " aria-current="page">
+        <a routerLink="/recipes">Recipe</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Details</li>
+    </ol>
+  </nav>
+
+  <nav class="navbar navbar-light bg-light">
+    <h1>Recipe details</h1>
+  </nav> 
+
+<mat-card class="internal-size-card" *ngIf="recipe">
+
+  <mat-card-header>    
+    <mat-card-subtitle>
+      <mat-icon>assignment</mat-icon>
+      Recipe ID :
+      <span class="badge badge-secondary rounded-pill">{{ recipe.id }}</span>
+    </mat-card-subtitle>
+    <mat-card-title>
+      <mat-icon>subtitles</mat-icon>
+      Name : {{recipe?.name}}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      <mat-icon>access_time</mat-icon>
+      Created On : {{recipe?.createdOn | date : 'short'}}
+    </p>
+    <p *ngIf="recipe?.updatedOn">
+      <mat-icon>access_time</mat-icon>
+      Update On : {{recipe?.updatedOn | date : 'short'}}
+    </p>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+
+</mat-card>
+
+
+<nav id="navbar-example2" class="navbar navbar-light bg-light">
+  <h1 >
+    <mat-icon> list_alt</mat-icon>
+    List of ingredientss that have been added to this recipe
+  </h1>
+  <ul class="nav nav-pills">
+    <li class="nav-item">      
+      <button mat-stroked-button color="primary" (click)="openDialog('0ms', '0ms')">
+        <mat-icon>playlist_add</mat-icon>
+        Add a ingredient to the recipe
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+  <table mat-table [dataSource]="ingredients" *ngIf="ingredients.length>0; else emptyTableMessage" >
+  
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name. </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef> Quantity. </th>
+      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+    </ng-container>    
+    
+    <ng-container matColumnDef="createdOn">
+      <th mat-header-cell *matHeaderCellDef> CreatedOn. </th>
+      <td mat-cell *matCellDef="let element"> {{element.createdOn | date :'short'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="updaedOn">
+      <th mat-header-cell *matHeaderCellDef> UpdatedOn. </th>
+      <td mat-cell *matCellDef="let element"> {{element.updatedOn | date :'short'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="menuRemove" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-mini-fab color="warn" (click)="onRemoveIngredient(element)"> 
+          <mat-icon>delete</mat-icon> 
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<ng-template #emptyTableMessage>
+  <div class="jumbotron" >
+    <h1 class="display-1" class="text-center">No Data!</h1>
+    <p class="lead" class="text-center">Please add a ingredient.</p>
+    <hr class="my-4">
+    <p class="text-right">You have a button on the top right that you can use to add a ingredient.</p>
+  </div>
+</ng-template>
