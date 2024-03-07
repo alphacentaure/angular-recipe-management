@@ -69,7 +69,7 @@ export class RecipeDetailComponent implements OnInit, OnDestroy{
         if(data) {
           console.log("data = " + data.name);
           this.recipe = data;
-     //     this.ingredients = data.ingredients == undefined ? [] : data.ingredients; //ICI
+          this.ingredients = data.ingredients == undefined ? [] : data.ingredients; //ICI
         } else {
           console.log('error recipes inside RecipeDetailComponent');
         }
