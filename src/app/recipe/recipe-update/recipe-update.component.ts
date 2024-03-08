@@ -22,14 +22,10 @@ export class RecipeUpdateComponent {
 
   public onUpdateRecipe(): void {
     if (this.recipe.id) {
-    
-      this.recipeService
-        .update(this.recipe)
-        .subscribe((_data) => {
-          this.recipe = _data;
-          this.goBackToRecipes();
-        });
-
+      this.recipeService.update(this.recipe).subscribe((_data) => {
+        this.recipe = _data;
+        this.goBackToRecipes();
+      });
     } else {
       console.log('error recipes inside RecipeUpdateComponent');
     }
@@ -49,15 +45,10 @@ export class RecipeUpdateComponent {
   }
 
   public getRecipe(id: number) {
-    this.dataSub$ = this.recipeService
-      .get(id)
-      .subscribe((_data) => {
-        if (_data) {
-          console.log('data = ' + _data.name);
-          //         this.recipeId = data?.id;
-          this.recipe = _data;
-        }
-      });
+    this.dataSub$ = this.recipeService.get(id).subscribe((_data) => {
+      if (_data) {
+        this.recipe = _data;
+      }
+    });
   }
-  
 }

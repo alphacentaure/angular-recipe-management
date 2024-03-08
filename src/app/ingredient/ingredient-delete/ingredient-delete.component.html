@@ -1,22 +1,24 @@
 <nav aria-label="breadcrumb" class="sticky-top">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item " aria-current="page">
-        <a routerLink="/ingredients">Ingredients</a>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">Delete</li>
-    </ol>
-  </nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">
+      <a routerLink="/ingredients">Ingredients</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Delete</li>
+  </ol>
+</nav>
 
-  <nav class="navbar navbar-light bg-light">
-    <h1>Shows the ingredient to delete</h1>
-  </nav>
+<nav class="navbar navbar-light bg-light">
+  <h1>Shows the ingredient to delete</h1>
+</nav>
 
 <mat-card *ngIf="ingredient">
   <mat-card-header>
     <mat-card-subtitle>
       <mat-icon>assignment</mat-icon>
       Ingredient ID :
-      <span class="badge badge-secondary rounded-pill">{{ ingredient.id }}</span>
+      <span class="badge badge-secondary rounded-pill">{{
+        ingredient.id
+      }}</span>
     </mat-card-subtitle>
     <mat-card-title>
       <mat-icon>subtitles</mat-icon>
@@ -38,5 +40,7 @@
       Update On : {{ ingredient.updatedOn | date : "short" }}
     </p>
   </mat-card-content>
-  <button (click)="deleteIngredient()" class="btn btn-outline-danger">Confirm the deletion</button>
+  <button (click)="deleteIngredient()" class="btn btn-outline-danger">
+    Confirm the deletion
+  </button>
 </mat-card>

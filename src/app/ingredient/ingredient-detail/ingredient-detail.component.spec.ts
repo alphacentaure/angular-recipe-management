@@ -14,26 +14,26 @@ describe('IngredientDetailComponent', () => {
   let component: IngredientDetailComponent;
   let fixture: ComponentFixture<IngredientDetailComponent>;
 
-  let dummyData: Data = {id: 1, name: 'Name 1', quantity: '1 quantity'};
-  
+  let dummyData: Data = { id: 1, name: 'Name 1', quantity: '1 quantity' };
+
   const mockActivatedRoute = {
     snapshot: {
       params: {
-        id: '1'
-      }
-    }
+        id: '1',
+      },
+    },
   };
 
   beforeEach(async () => {
     let IngredientServiceFake = {
-      get(id:number): Observable<Data> {
+      get(id: number): Observable<Data> {
         return of(dummyData);
       },
     };
 
     await TestBed.configureTestingModule({
       declarations: [IngredientDetailComponent],
-      imports: [MatCardModule,MatDividerModule,MatIconModule],
+      imports: [MatCardModule, MatDividerModule, MatIconModule],
       providers: [
         {
           provide: IngredientService,
@@ -42,11 +42,10 @@ describe('IngredientDetailComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: mockActivatedRoute,
-        }        
+        },
       ],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(IngredientDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -58,12 +57,13 @@ describe('IngredientDetailComponent', () => {
 
   it('activated route should show the ID of the ingredient', () => {
     let testEl = fixture.debugElement.query(By.css('mat-card-subtitle'));
-    expect(testEl.nativeElement.textContent).toEqual('assignment Ingredient ID : 1');
+    expect(testEl.nativeElement.textContent).toEqual(
+      'assignment Ingredient ID : 1'
+    );
   });
 
   it('getIngredient() by id should return a specific ingredient', () => {
-    const data: Data = {id: 1, name: 'Name 1', quantity: '1 quantity'};
+    const data: Data = { id: 1, name: 'Name 1', quantity: '1 quantity' };
     expect(component.ingredient).toEqual(data);
   });
-
 });

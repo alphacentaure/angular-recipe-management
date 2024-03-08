@@ -27,22 +27,15 @@ export class RecipeDeleteComponent {
 
   public deleteRecipe(): void {
     if (this.recipe.id) {
-      this.service
-        .delete(this.recipe.id)
-        .subscribe((_data) => {
-          console.log('data after deletion = ' + JSON.stringify(_data));
-          this.recipe = _data;
-          this.goBackToRecipes();
-        });
-    } else {
-      console.log('error recipes inside RecipeDeleteComponent');
+      this.service.delete(this.recipe.id).subscribe((_data) => {
+        this.recipe = _data;
+        this.goBackToRecipes();
+      });
     }
   }
 
   goBackToRecipes(): void {
     this.router.navigate(['./recipes']);
-    //this.router.navigate(['./recipe/recipecreate']);
-    //this.router.navigate(['']);
   }
 
   ngOnInit(): void {
@@ -55,14 +48,10 @@ export class RecipeDeleteComponent {
   }
 
   public getRecipe(id: number) {
-    this.dataSub$ = this.service
-      .get(id)
-      .subscribe((data) => {
-        if (data) {
-          console.log('data = ' + data.name);
-          // this.recipeId = Number(data.id);
-          this.recipe = data;
-        }
-      });
+    this.dataSub$ = this.service.get(id).subscribe((data) => {
+      if (data) {
+        this.recipe = data;
+      }
+    });
   }
 }

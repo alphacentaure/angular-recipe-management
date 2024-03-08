@@ -1,16 +1,16 @@
 <nav aria-label="breadcrumb" class="sticky-top">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item " aria-current="page">
-        <a routerLink="/recipes">Recipe</a>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">Delete</li>
-    </ol>
-  </nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page">
+      <a routerLink="/recipes">Recipe</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Delete</li>
+  </ol>
+</nav>
 
-  <nav class="navbar navbar-light bg-light">
-    <h1>Show recipe to delete</h1>
-  </nav>
-  
+<nav class="navbar navbar-light bg-light">
+  <h1>Show recipe to delete</h1>
+</nav>
+
 <mat-card *ngIf="recipe">
   <mat-card-header>
     <mat-card-subtitle>
@@ -34,5 +34,7 @@
       Update On : {{ recipe.updatedOn | date : "short" }}
     </p>
   </mat-card-content>
-  <button (click)="deleteRecipe()" class="btn btn-outline-danger">Confirm the deletion</button>
+  <button (click)="deleteRecipe()" class="btn btn-outline-danger">
+    Confirm the deletion
+  </button>
 </mat-card>

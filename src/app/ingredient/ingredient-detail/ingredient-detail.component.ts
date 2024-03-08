@@ -28,11 +28,8 @@ export class IngredientDetailComponent implements OnInit, OnDestroy {
   }
 
   private getProduct(id: number) {
-    console.log('la id de la route est = ' + id);
-
     this.dataSub$ = this.service.get(id).subscribe((data) => {
       if (data) {
-        console.log('data = ' + data.name);
         this.ingredient = data;
       }
     });

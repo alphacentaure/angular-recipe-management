@@ -12,11 +12,11 @@ const routes: Routes = [
   { path: 'ingredientcreate', component: IngredientCreateComponent },
   { path: 'ingredientdelete/:id', component: IngredientDeleteComponent },
   { path: 'ingredientdetail/:id', component: IngredientDetailComponent },
-  { path: 'ingredientupdate/:id', component: IngredientUpdateComponent },   
+  { path: 'ingredientupdate/:id', component: IngredientUpdateComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class IngredientRoutingModule { }
+export class IngredientRoutingModule {}

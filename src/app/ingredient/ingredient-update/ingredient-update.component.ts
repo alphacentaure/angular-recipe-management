@@ -22,13 +22,10 @@ export class IngredientUpdateComponent {
   ) {}
 
   public updateIngredient(): void {
-
-      this.service
-        .update(this.ingredient)
-        .subscribe((_data) => {
-          this.ingredient = _data;
-          this.goBackToIngredients();        
-      });
+    this.service.update(this.ingredient).subscribe((_data) => {
+      this.ingredient = _data;
+      this.goBackToIngredients();
+    });
   }
 
   goBackToIngredients(): void {
@@ -37,7 +34,7 @@ export class IngredientUpdateComponent {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
-    this.getIngredient(id);    
+    this.getIngredient(id);
   }
 
   ngOnDestroy(): void {
@@ -45,13 +42,10 @@ export class IngredientUpdateComponent {
   }
 
   getIngredient(id: number) {
-    this.dataSub$ = this.service
-      .get(id)
-      .subscribe((_data) => {
-        if (_data) {
-          this.ingredient = _data;
-        }
-      });
+    this.dataSub$ = this.service.get(id).subscribe((_data) => {
+      if (_data) {
+        this.ingredient = _data;
+      }
+    });
   }
-
 }

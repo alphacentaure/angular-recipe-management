@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { IngredientService } from '../service/ingredient.service';
 import { Ingredient } from '../model/ingredient';
 
-
 @Component({
   selector: 'app-ingredient-list',
   templateUrl: './ingredient-list.component.html',

@@ -12,27 +12,27 @@ import { RecipeDetailComponent } from './recipe-detail.component';
 describe('RecipeDetailComponent', () => {
   let component: RecipeDetailComponent;
   let fixture: ComponentFixture<RecipeDetailComponent>;
-  
+
   let dummyData: Data = { id: 1, name: 'Testing Data 1' };
-  
+
   const mockActivatedRoute = {
     snapshot: {
       params: {
-        id: '1'
-      }
-    }
+        id: '1',
+      },
+    },
   };
 
   beforeEach(async () => {
     let RecipeServiceFake = {
-      get(id:number): Observable<Data> {
+      get(id: number): Observable<Data> {
         return of(dummyData);
       },
     };
 
     await TestBed.configureTestingModule({
       declarations: [RecipeDetailComponent],
-      imports: [MatCardModule,MatDividerModule,MatIconModule],
+      imports: [MatCardModule, MatDividerModule, MatIconModule],
       providers: [
         {
           provide: RecipeService,
@@ -41,11 +41,10 @@ describe('RecipeDetailComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: mockActivatedRoute,
-        }        
+        },
       ],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(RecipeDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -57,12 +56,13 @@ describe('RecipeDetailComponent', () => {
 
   it('activated route should show the ID of the Recipe', () => {
     let testEl = fixture.debugElement.query(By.css('mat-card-subtitle'));
-    expect(testEl.nativeElement.textContent).toEqual('assignment Recipe ID : 1');
+    expect(testEl.nativeElement.textContent).toEqual(
+      'assignment Recipe ID : 1'
+    );
   });
 
   it('getRecipes() by id should return one recipe', () => {
     const datas: Data = { id: 1, name: 'Testing Data 1' };
     expect(component.recipe).toEqual(datas);
   });
-
 });

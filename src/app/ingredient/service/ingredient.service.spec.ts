@@ -14,8 +14,6 @@ describe('IngredientService', () => {
       imports: [ HttpClientTestingModule ]
     });
 
-    // Inject the http service and test controller for each test
-    //httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
 
     service = TestBed.inject(IngredientService);
@@ -25,7 +23,7 @@ describe('IngredientService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-/*
+
   it('Ingredient service should GET a list of data', () => {
     const datas: Data[] = [
       {id: 1, name: 'Name ingredient 1', quantity: '1 quantity'},
@@ -119,7 +117,6 @@ describe('IngredientService', () => {
 
     service.delete(id)
       .subscribe(_data =>{
-        console.log("_data" + JSON.stringify(_data));
         expect(_data).toEqual(data);
         }
       );
@@ -132,5 +129,5 @@ describe('IngredientService', () => {
   
     httpTestingController.verify();
   });
-*/    
+    
 });

@@ -15,7 +15,7 @@ describe('RecipeListComponent', () => {
     { id: 2, name: 'Testing Data 2' },
     { id: 3, name: 'Testing Data 3' },
   ];
- 
+
   beforeEach(async () => {
     let RecipeServiceFake = {
       getAll(): Observable<Data> {
@@ -32,10 +32,8 @@ describe('RecipeListComponent', () => {
           useValue: RecipeServiceFake,
         },
       ],
+    }).compileComponents();
 
-    })
-    .compileComponents();
-    
     fixture = TestBed.createComponent(RecipeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -44,20 +42,14 @@ describe('RecipeListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
   it('getRecipes() should have the recipes list load', () => {
     const datas: Data[] = [
       { id: 1, name: 'Testing Data 1' },
       { id: 2, name: 'Testing Data 2' },
       { id: 3, name: 'Testing Data 3' },
     ];
-    console.log(
-      JSON.stringify(
-        'component.recipes après= ' + JSON.stringify(component.recipes)
-      )
-    );
     expect(component.recipes).toEqual(datas);
     expect(component.recipes).toHaveSize(3);
   });
-  
 });

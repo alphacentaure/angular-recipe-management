@@ -24,18 +24,20 @@ import { MatButtonModule } from '@angular/material/button';
     IngredientDetailComponent,
     IngredientDeleteComponent,
     IngredientCreateComponent,
-    IngredientUpdateComponent
+    IngredientUpdateComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDividerModule,MatIconModule,MatMenuModule,MatTableModule, // ingredientListComponent  
+    MatDividerModule,
+    MatIconModule,
+    MatMenuModule,
+    MatTableModule,
     MatCardModule,
-    IngredientRoutingModule,MatButtonModule
-  ], 
-  providers: [
-    IngredientService
-  ]
+    IngredientRoutingModule,
+    MatButtonModule,
+  ],
+  providers: [IngredientService],
 })
-export class IngredientModule { }
+export class IngredientModule {}

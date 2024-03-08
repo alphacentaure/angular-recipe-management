@@ -12,10 +12,7 @@ import { RecipeService } from '../service/recipe.service';
 export class RecipeCreateComponent {
   public recipe: Recipe = {};
 
-  constructor(
-    private service: RecipeService,
-    private router: Router
-  ) {}
+  constructor(private service: RecipeService, private router: Router) {}
 
   public recipeForm = new FormGroup({
     name: new FormControl<string>('', { nonNullable: true }),
@@ -30,11 +27,11 @@ export class RecipeCreateComponent {
   get description() {
     return this.recipeForm.controls.description;
   }
-  
+
   get instruction() {
     return this.recipeForm.controls.instruction;
   }
-  
+
   public filledRecipe() {
     this.recipe = {
       name: this.name.value,
@@ -42,10 +39,7 @@ export class RecipeCreateComponent {
       instruction: this.instruction.value,
     };
 
-    if (
-      this.recipe.name != undefined &&
-      this.recipe.name.trim() != ''
-    ) {
+    if (this.recipe.name != undefined && this.recipe.name.trim() != '') {
       this.addRecipe(this.recipe);
     } else {
       console.log('recipe recipes inside RecipeCreateComponent');

@@ -33,11 +33,11 @@ export class RecipeService {
   }
   
   addIngredientToRecipe(id:number, data: Ingredient) : Observable<Recipe> {
-    return this.http.post<Recipe>(`${this.url}/${id}/add-ingredient`, data); 
+    return this.http.put<Recipe>(`${this.url}/${id}/add-ingredient`, data); 
   }
 
   removeIngredientFromRecipe(id:number, data: Ingredient) : Observable<Recipe> {
-    return this.http.post<Recipe>(`${this.url}/${id}/remove-ingredient`,data); 
+    return this.http.put<Recipe>(`${this.url}/${id}/remove-ingredient`,data); 
   }
   
 }

@@ -33,7 +33,7 @@ export class IngredientCreateComponent {
     };
 
     if (
-      this.ingredient.name != undefined && 
+      this.ingredient.name != undefined &&
       this.ingredient.name.trim() != ''
     ) {
       this.addIngredient(this.ingredient);

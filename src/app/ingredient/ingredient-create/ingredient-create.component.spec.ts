@@ -10,7 +10,7 @@ describe('IngredientCreateComponent', () => {
   let component: IngredientCreateComponent;
   let fixture: ComponentFixture<IngredientCreateComponent>;
 
-  const dummyData : Data = {id: 1, name: 'Name 1', quantity: '1 quantity'};
+  const dummyData: Data = { id: 1, name: 'Name 1', quantity: '1 quantity' };
 
   beforeEach(async () => {
     let IngredientServiceFake = {
@@ -26,11 +26,10 @@ describe('IngredientCreateComponent', () => {
         {
           provide: IngredientService,
           useValue: IngredientServiceFake,
-        },                
+        },
       ],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(IngredientCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -41,11 +40,14 @@ describe('IngredientCreateComponent', () => {
   });
 
   it('should POST a ingredient', () => {
-    const data : Data = {id: 1, name: 'Name 1', quantity: '1 quantity'};
-    const expectedData : Data = {id: 1, name: 'Name 1', quantity: '1 quantity'};
+    const data: Data = { id: 1, name: 'Name 1', quantity: '1 quantity' };
+    const expectedData: Data = {
+      id: 1,
+      name: 'Name 1',
+      quantity: '1 quantity',
+    };
 
     component.addIngredient(data);
     expect(component.ingredient).toEqual(expectedData);
   });
-  
 });

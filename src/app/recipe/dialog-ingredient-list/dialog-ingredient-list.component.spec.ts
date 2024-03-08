@@ -13,11 +13,11 @@ describe('DialogIngredientListComponent', () => {
   let fixture: ComponentFixture<DialogIngredientListComponent>;
 
   let dummyData: Data = [
-    {id: 1, name: 'Name dummy 1', quantity: '1 quantyt dummy'},
-    {id: 2, name: 'Name dummy 2', quantity: '2 quantyt dummy'},
-    {id: 3, name: 'Name dummy 3', quantity: '3 quantyt dummy'}
+    { id: 1, name: 'Name dummy 1', quantity: '1 quantyt dummy' },
+    { id: 2, name: 'Name dummy 2', quantity: '2 quantyt dummy' },
+    { id: 3, name: 'Name dummy 3', quantity: '3 quantyt dummy' },
   ];
- 
+
   beforeEach(async () => {
     let IngredientServiceFake = {
       getAll(): Observable<Data> {
@@ -35,12 +35,11 @@ describe('DialogIngredientListComponent', () => {
         },
         {
           provide: MatDialogRef,
-          useValue: IngredientServiceFake
-        }
+          useValue: IngredientServiceFake,
+        },
       ],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(DialogIngredientListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -49,14 +48,14 @@ describe('DialogIngredientListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-      
+
   it('getIngredients() should have the Ingredient list load', () => {
     const datas: Data[] = [
-      {id: 1, name: 'Name dummy 1', quantity: '1 quantyt dummy'},
-      {id: 2, name: 'Name dummy 2', quantity: '2 quantyt dummy'},
-      {id: 3, name: 'Name dummy 3', quantity: '3 quantyt dummy'}
+      { id: 1, name: 'Name dummy 1', quantity: '1 quantyt dummy' },
+      { id: 2, name: 'Name dummy 2', quantity: '2 quantyt dummy' },
+      { id: 3, name: 'Name dummy 3', quantity: '3 quantyt dummy' },
     ];
-    
+
     expect(component.ingredients).toEqual(datas);
     expect(component.ingredients).toHaveSize(3);
   });

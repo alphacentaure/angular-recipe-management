@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -15,8 +15,8 @@ export class IngredientDeleteComponent implements OnInit {
   private dataSub$: Subscription | undefined;
 
   constructor(
-    private route: ActivatedRoute, 
-    private router: Router,   
+    private route: ActivatedRoute,
+    private router: Router,
     private service: IngredientService
   ) {}
 
@@ -39,7 +39,6 @@ export class IngredientDeleteComponent implements OnInit {
 
   goBackToIingredients(): void {
     this.router.navigate(['./ingredients']);
-    //this.router.navigate(['./']);
   }
 
   ngOnInit(): void {
@@ -52,13 +51,10 @@ export class IngredientDeleteComponent implements OnInit {
   }
 
   private getIngredient(id: number) {
-    this.dataSub$ = this.service
-      .get(id)
-      .subscribe((data) => {
-        if (data) {
-          console.log('data = ' + data.name);
-          this.ingredient = data;
-        }
-      });
+    this.dataSub$ = this.service.get(id).subscribe((data) => {
+      if (data) {
+        this.ingredient = data;
+      }
+    });
   }
 }

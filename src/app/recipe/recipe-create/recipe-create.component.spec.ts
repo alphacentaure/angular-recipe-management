@@ -11,7 +11,7 @@ describe('RecipeCreateComponent', () => {
   let fixture: ComponentFixture<RecipeCreateComponent>;
 
   let dummyData: Data = { id: 1, name: 'Testing Data 1' };
- 
+
   beforeEach(async () => {
     let RecipeServiceFake = {
       create(): Observable<Data> {
@@ -26,11 +26,10 @@ describe('RecipeCreateComponent', () => {
         {
           provide: RecipeService,
           useValue: RecipeServiceFake,
-        },                
+        },
       ],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(RecipeCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -42,10 +41,9 @@ describe('RecipeCreateComponent', () => {
 
   it('should POST a recipe', () => {
     const data: Data = { name: 'Testing Data 1' };
-    const expectedData : Data = { id: 1, name: 'Testing Data 1' };
+    const expectedData: Data = { id: 1, name: 'Testing Data 1' };
 
     component.addRecipe(data);
     expect(component.recipe).toEqual(expectedData);
   });
-  
 });

@@ -12,17 +12,15 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule ,
-        MatToolbarModule, 
+        RouterTestingModule,
+        MatToolbarModule,
         MatIconModule,
         MatSidenavModule,
         MatListModule,
         BrowserModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
       ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -31,18 +29,4 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
-/*
-  it(`should have as title 'rmav2'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('rmav2');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, rmav2');
-  });
-  */
 });

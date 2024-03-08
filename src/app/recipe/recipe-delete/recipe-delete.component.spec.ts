@@ -12,30 +12,30 @@ import { RecipeService } from '../service/recipe.service';
 describe('RecipeDeleteComponent', () => {
   let component: RecipeDeleteComponent;
   let fixture: ComponentFixture<RecipeDeleteComponent>;
-  
+
   let dummyData: Data = { id: 1, name: 'Testing Data 1' };
 
   const mockActivatedRoute = {
     snapshot: {
       params: {
-        id: '1'
-      }
-    }
+        id: '1',
+      },
+    },
   };
 
   beforeEach(async () => {
     let RecipeServiceFake = {
-      delete(id:number): Observable<Data> {
+      delete(id: number): Observable<Data> {
         return of(dummyData);
       },
-      get(id:number): Observable<Data> {
+      get(id: number): Observable<Data> {
         return of(dummyData);
       },
     };
 
     await TestBed.configureTestingModule({
       declarations: [RecipeDeleteComponent],
-      imports: [MatCardModule,MatDividerModule,MatIconModule],
+      imports: [MatCardModule, MatDividerModule, MatIconModule],
       providers: [
         {
           provide: RecipeService,
@@ -44,11 +44,10 @@ describe('RecipeDeleteComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: mockActivatedRoute,
-        }        
+        },
       ],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(RecipeDeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -60,28 +59,19 @@ describe('RecipeDeleteComponent', () => {
 
   it('activated route should show the ID of the Recipe', () => {
     let testEl = fixture.debugElement.query(By.css('mat-card-subtitle'));
-    expect(testEl.nativeElement.textContent).toEqual('assignment Recipe ID : 1');
+    expect(testEl.nativeElement.textContent).toEqual(
+      'assignment Recipe ID : 1'
+    );
   });
 
   it('getRecipes() by id should return one recipe', () => {
     const datas: Data = { id: 1, name: 'Testing Data 1' };
-    console.log(
-      JSON.stringify(
-        'component.recipes après= ' + JSON.stringify(component.recipe)
-      )
-    );
     expect(component.recipe).toEqual(datas);
   });
 
   it('deleteRecipe() should return one recipe', () => {
     const datas: Data = { id: 1, name: 'Testing Data 1' };
-    console.log(
-      JSON.stringify(
-        'component.recipes après= ' + JSON.stringify(component.recipe)
-      )
-    );
     component.deleteRecipe();
     expect(component.recipe).toEqual(datas);
   });
-
 });

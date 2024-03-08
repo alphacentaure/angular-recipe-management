@@ -10,30 +10,30 @@ import { RecipeService } from '../service/recipe.service';
 describe('RecipeUpdateComponent', () => {
   let component: RecipeUpdateComponent;
   let fixture: ComponentFixture<RecipeUpdateComponent>;
- 
+
   let dummyData: Data = { id: 1, name: 'Testing Data 1' };
-  
+
   const mockActivatedRoute = {
     snapshot: {
       params: {
-        id: '1'
-      }
-    }
+        id: '1',
+      },
+    },
   };
 
   beforeEach(async () => {
     let RecipeServiceFake = {
-      update(id:number): Observable<Data> {
+      update(id: number): Observable<Data> {
         return of(dummyData);
       },
-      get(id:number): Observable<Data> {
+      get(id: number): Observable<Data> {
         return of(dummyData);
       },
     };
 
     await TestBed.configureTestingModule({
       declarations: [RecipeUpdateComponent],
-      imports: [FormsModule,ReactiveFormsModule],
+      imports: [FormsModule, ReactiveFormsModule],
       providers: [
         {
           provide: RecipeService,
@@ -42,11 +42,10 @@ describe('RecipeUpdateComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: mockActivatedRoute,
-        }        
+        },
       ],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(RecipeUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -55,9 +54,9 @@ describe('RecipeUpdateComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
   it('activated route should show the ID of the Recipe', () => {
-    let testEl = fixture.debugElement.query(By.css('h1')); 
+    let testEl = fixture.debugElement.query(By.css('h1'));
     expect(testEl.nativeElement.textContent).toEqual('Update a recipe 1');
   });
 
@@ -66,10 +65,9 @@ describe('RecipeUpdateComponent', () => {
     expect(component.recipe).toEqual(datas);
   });
 
-  it('should update a recipe', () => {      
-    const expectedData : Data = { id: 1, name: 'Testing Data 1' };
+  it('should update a recipe', () => {
+    const expectedData: Data = { id: 1, name: 'Testing Data 1' };
     component.onUpdateRecipe();
     expect(component.recipe).toEqual(expectedData);
   });
-
 });

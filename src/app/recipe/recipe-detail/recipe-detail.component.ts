@@ -10,39 +10,39 @@ import { DialogIngredientListComponent } from '../dialog-ingredient-list/dialog-
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
-  styleUrl: './recipe-detail.component.css'
+  styleUrl: './recipe-detail.component.css',
 })
-export class RecipeDetailComponent implements OnInit, OnDestroy{
- 
-  public recipe : Recipe | any;
-  private dataSub$ : Subscription | undefined;
-  public ingredients : Ingredient[] = []; //ICI
-  private selectedIngredient : Ingredient| any; //ICI
+export class RecipeDetailComponent implements OnInit, OnDestroy {
+  public recipe: Recipe | any;
+  private dataSub$: Subscription | undefined;
+  public ingredients: Ingredient[] = [];
+  private selectedIngredient: Ingredient | any;
 
-  displayedColumns: string[] = ['id', 'name', 'quantity','createdOn','updaedOn','menuRemove'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'quantity',
+    'createdOn',
+    'updaedOn',
+    'menuRemove',
+  ];
 
   constructor(
-    private route: ActivatedRoute, 
-    //private router:Router,
+    private route: ActivatedRoute,
+
     public dialog: MatDialog,
-    private service: RecipeService) { }
+    private service: RecipeService
+  ) {}
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    /*
-    const dialogRef = this.dialog.open(DialogInggredientListComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-    */
-
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
     const dialogRef = this.dialog.open(DialogIngredientListComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.selectedIngredient = result; 
-      //if(this.selectedIngredient){
-      if(result){
-        console.log(`Start adding ingredient to recipe`);
+    dialogRef.afterClosed().subscribe((result) => {
+      this.selectedIngredient = result;
+      if (result) {
         this.addSelectedIngredientToRecipe(result);
       }
     });
@@ -54,51 +54,50 @@ export class RecipeDetailComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.dataSub$?.unsubscribe()
+    this.dataSub$?.unsubscribe();
   }
-  
-  //onRemoveIngredient(elementIngredient : IIngredient): void {
-  public onRemoveIngredient(data: Ingredient){
-    //console.log("elelment selectionné " + JSON.stringify(data));
+
+  public onRemoveIngredient(data: Ingredient) {
     this.removeSelectedIngredientToRecipe(data);
   }
 
-  getRecipe(id: number) { 
-    this.dataSub$ = this.service.get(id).subscribe(
-      data => {
-        if(data) {
-          console.log("data = " + data.name);
-          this.recipe = data;
-          this.ingredients = data.ingredients == undefined ? [] : data.ingredients; //ICI
-        } else {
-          console.log('error recipes inside RecipeDetailComponent');
-        }
+  getRecipe(id: number) {
+    this.dataSub$ = this.service.get(id).subscribe((data) => {
+      if (data) {
+        this.recipe = data;
+        this.ingredients =
+          data.ingredients == undefined ? [] : data.ingredients;
+      } else {
+        console.log('error recipes inside RecipeDetailComponent');
       }
-    );
+    });
   }
- 
-  addSelectedIngredientToRecipe(ingredient : Ingredient) : void {{
-    this.service.addIngredientToRecipe(this.recipe.id,ingredient)
-                            .subscribe(
-                                (data) => {
-                                  if(data) {
-                                    console.log("data = " + data.name);
-                                    this.recipe = data;
-                                    this.ingredients = data.ingredients == undefined ? [] : data.ingredients;
-                                  }
-                                });
-  }};
 
-  removeSelectedIngredientToRecipe(ingredient : Ingredient) : void {{
-    this.service.removeIngredientFromRecipe(this.recipe.id,ingredient)
-                            .subscribe(
-                                (data) => {
-                                  if(data) {
-                                    console.log("data = " + data.name);
-                                    this.recipe = data;
-                                    this.ingredients = data.ingredients == undefined ? [] : data.ingredients;
-                                  }
-                                });
-  }};
+  addSelectedIngredientToRecipe(ingredient: Ingredient): void {
+    {
+      this.service
+        .addIngredientToRecipe(this.recipe.id, ingredient)
+        .subscribe((data) => {
+          if (data) {
+            this.recipe = data;
+            this.ingredients =
+              data.ingredients == undefined ? [] : data.ingredients;
+          }
+        });
+    }
+  }
 
+  removeSelectedIngredientToRecipe(ingredient: Ingredient): void {
+    {
+      this.service
+        .removeIngredientFromRecipe(this.recipe.id, ingredient)
+        .subscribe((data) => {
+          if (data) {
+            this.recipe = data;
+            this.ingredients =
+              data.ingredients == undefined ? [] : data.ingredients;
+          }
+        });
+    }
+  }
 }

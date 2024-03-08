@@ -13,29 +13,29 @@ describe('IngredientDeleteComponent', () => {
   let component: IngredientDeleteComponent;
   let fixture: ComponentFixture<IngredientDeleteComponent>;
 
-  let dummyData: Data = {id: 1, name: 'Name 1', quantity: '1 Quantity'};
+  let dummyData: Data = { id: 1, name: 'Name 1', quantity: '1 Quantity' };
 
   const mockActivatedRoute = {
     snapshot: {
       params: {
-        id: '1'
-      }
-    }
+        id: '1',
+      },
+    },
   };
 
   beforeEach(async () => {
     let IngredientServiceFake = {
-      delete(id:number): Observable<Data> {
+      delete(id: number): Observable<Data> {
         return of(dummyData);
       },
-      get(id:number): Observable<Data> {
+      get(id: number): Observable<Data> {
         return of(dummyData);
       },
     };
 
     await TestBed.configureTestingModule({
       declarations: [IngredientDeleteComponent],
-      imports: [MatCardModule,MatDividerModule,MatIconModule],
+      imports: [MatCardModule, MatDividerModule, MatIconModule],
       providers: [
         {
           provide: IngredientService,
@@ -44,11 +44,10 @@ describe('IngredientDeleteComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: mockActivatedRoute,
-        }        
+        },
       ],
-    })
-    .compileComponents();
-    
+    }).compileComponents();
+
     fixture = TestBed.createComponent(IngredientDeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -60,18 +59,27 @@ describe('IngredientDeleteComponent', () => {
 
   it('activated route should show the ID of the ingredient', () => {
     let testEl = fixture.debugElement.query(By.css('mat-card-subtitle'));
-    expect(testEl.nativeElement.textContent).toEqual('assignment Ingredient ID : 1');
+    expect(testEl.nativeElement.textContent).toEqual(
+      'assignment Ingredient ID : 1'
+    );
   });
 
   it('get() should return a specific ingredient', () => {
-    const expectedData: Data = {id: 1, name: 'Name 1', quantity: '1 Quantity'};
+    const expectedData: Data = {
+      id: 1,
+      name: 'Name 1',
+      quantity: '1 Quantity',
+    };
     expect(component.ingredient).toEqual(expectedData);
   });
 
   it('deleteIngredient() should return one ingredient', () => {
-    const expectedData: Data = {id: 1, name: 'Name 1', quantity: '1 Quantity'};
+    const expectedData: Data = {
+      id: 1,
+      name: 'Name 1',
+      quantity: '1 Quantity',
+    };
     component.deleteIngredient();
     expect(component.ingredient).toEqual(expectedData);
   });
-  
 });

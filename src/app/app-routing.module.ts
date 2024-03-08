@@ -8,7 +8,7 @@ const routes: Routes = [
     path: 'recipes',
     loadChildren: () =>
       import('./recipe/recipe.module').then((m) => m.RecipeModule),
-  },   
+  },
   {
     path: 'ingredients',
     loadChildren: () =>
@@ -19,6 +19,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

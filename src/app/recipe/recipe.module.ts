@@ -23,7 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     RecipeListComponent,
     RecipeDeleteComponent,
     RecipeDetailComponent,
-    RecipeUpdateComponent    
+    RecipeUpdateComponent,
   ],
   imports: [
     CommonModule,
@@ -31,13 +31,14 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     RecipeRoutingModule,
     MatTableModule,
-    MatCardModule,MatDividerModule,MatIconModule,
-    MatMenuTrigger,MatMenu,MatButtonModule,  
-    MatMenuModule
-    
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule,
+    MatMenuTrigger,
+    MatMenu,
+    MatButtonModule,
+    MatMenuModule,
   ],
-  providers: [
-    RecipeService
-  ]
+  providers: [RecipeService],
 })
-export class RecipeModule { }
+export class RecipeModule {}

@@ -5,7 +5,7 @@ import {
   MatDialogClose,
   MatDialogTitle,
   MatDialogContent,
-  MatDialogRef
+  MatDialogRef,
 } from '@angular/material/dialog';
 
 import { Subject, takeUntil } from 'rxjs';
@@ -35,7 +35,7 @@ export class DialogIngredientListComponent implements OnInit {
   private dataSub$ = new Subject<void>();
   public flags: boolean = false;
 
-  displayedColumns: string[] = ['id', 'name', 'quantity.', 'star'];  
+  displayedColumns: string[] = ['id', 'name', 'quantity.', 'star'];
 
   constructor(
     public service: IngredientService,
@@ -45,10 +45,9 @@ export class DialogIngredientListComponent implements OnInit {
   getIngredients() {
     this.service
       .getAll()
-      .pipe(takeUntil(this.dataSub$)) //the pipe and the takeUntil : will subscribe and unsubscribe when complete
+      .pipe(takeUntil(this.dataSub$))
       .subscribe((_datas) => {
         if (_datas) {
-          console.log('data length = ' + _datas.length);
           this.ingredients = _datas;
           this.flags = true;
         } else {
@@ -60,5 +59,4 @@ export class DialogIngredientListComponent implements OnInit {
   ngOnInit(): void {
     this.getIngredients();
   }
-
 }
