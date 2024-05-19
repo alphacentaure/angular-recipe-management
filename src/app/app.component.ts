@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'rmav2';
+  title = 'rma';
 
   events: string[] = [];
   opened: boolean = true;
